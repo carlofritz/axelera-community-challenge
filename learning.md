@@ -1,0 +1,151 @@
+# Learning Log
+
+## How To Use This Document
+This file is the durable knowledge base for the project.
+It captures reusable procedures, lessons learned, and phase-specific decisions.
+
+Update triggers:
+1. Current step changes in `plan.md`.
+2. A blocker is resolved or a new blocker appears.
+3. A reusable command sequence is identified.
+
+Tidy policy:
+1. Every 3 to 5 meaningful entries, consolidate duplicates.
+2. Promote stable procedures into the playbooks section.
+3. Keep short, factual entries and link to phase docs/artifacts when available.
+
+## Project Snapshot
+- Date: `2026-02-26`
+- Active step: `P01.01`
+- Active platform: `Windows`
+- Next platform: `Linux`
+
+## Phase Learnings
+
+### P01 Training (Windows)
+Goal:
+Train a hand keypoint model with Ultralytics and produce a reproducible handoff checkpoint.
+
+What Worked:
+- Phase-based governance and progress tracking are now in place.
+
+What Failed / Risks:
+- GitHub CLI auth currently invalid; remote creation/push blocked until re-authentication.
+
+Reusable Commands:
+```powershell
+git status --short --branch
+```
+Check current branch and working tree state.
+
+Decisions Taken:
+- Use modular phase folders.
+- Track one active step at a time in `plan.md`.
+
+Open Questions:
+- Final hand keypoint schema and metric thresholds for `P01.01`.
+
+Next Update Trigger:
+- Freeze keypoint list/order and acceptance metrics for `P01.01`.
+
+### P02 Export (Linux/Axelera)
+Goal:
+Export the trained model in Axelera runtime-compliant format on Linux.
+
+What Worked:
+- Not started.
+
+What Failed / Risks:
+- Toolchain compatibility constraints are not yet validated.
+
+Reusable Commands:
+- Placeholder until phase execution starts.
+
+Decisions Taken:
+- Linux is the export environment.
+
+Open Questions:
+- Exact Axelera export commands and model constraints.
+
+Next Update Trigger:
+- Begin `P02.01` with concrete export checklist.
+
+### P03 Runtime Validation (Metis + Orange Pi 5 Plus)
+Goal:
+Validate runtime behavior of exported model on target hardware.
+
+What Worked:
+- Not started.
+
+What Failed / Risks:
+- Not started.
+
+Reusable Commands:
+- Placeholder until phase execution starts.
+
+Decisions Taken:
+- Host device is Orange Pi 5 Plus; accelerator is Metis.
+
+Open Questions:
+- Runtime KPIs and acceptance thresholds.
+
+Next Update Trigger:
+- Start runtime deployment validation.
+
+### P04 Post-Processing
+Goal:
+Define and integrate post-processing after baseline runtime success.
+
+What Worked:
+- Deferred by design.
+
+What Failed / Risks:
+- Scope not defined yet.
+
+Reusable Commands:
+- Placeholder until phase execution starts.
+
+Decisions Taken:
+- Post-processing intentionally follows successful runtime validation.
+
+Open Questions:
+- Output contract and algorithmic approach.
+
+Next Update Trigger:
+- Runtime output contract finalized in P03.
+
+## Reusable Command Playbooks
+
+### GitHub Setup And Connection
+```powershell
+gh auth login -h github.com
+gh repo create axelera-community-challenge --public --source . --remote origin --push
+git push -u origin main
+```
+Authenticate, create/connect remote repository, and push `main`.
+
+### Branch + PR Flow
+```powershell
+git checkout -b feature/<topic>
+git add <files>
+git commit -m "feat(scope): short summary"
+git push -u origin feature/<topic>
+```
+Create a feature branch, commit scoped changes, and publish for PR.
+
+### Training Run Skeleton (Ultralytics)
+```powershell
+yolo train model=<model>.pt data=<data>.yaml epochs=<n> imgsz=<size>
+```
+Baseline skeleton for training commands (to be pinned in P01 with exact values).
+
+### Export Skeleton (Linux/Axelera)
+```bash
+# Placeholder: fill with exact Axelera export commands in P02.
+```
+Reserved section for validated export procedure.
+
+## Periodic Cleanup Notes
+- Keep only validated and repeatable command flows in playbooks.
+- Move phase-specific detail to module docs once they grow.
+- Keep this file concise and operational.

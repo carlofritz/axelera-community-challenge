@@ -65,5 +65,19 @@ When updating completed modules:
 4. Use pull requests for merge, with at least one review before merging.
 5. Tag phase-ready milestones (`phase-p01-ready`, etc.) after acceptance criteria pass.
 
+## Response Mode: --explain
+If a user request contains `--explain`, switch to guided mode for that request.
+
+Mandatory output format:
+1. Provide an ordered step-by-step procedure.
+2. Include exact runnable commands in code blocks.
+3. Add a brief one-line explanation per command or step.
+4. End with verification commands (how to confirm success).
+
+Scope:
+1. Applies to any request that includes `--explain`.
+2. Without `--explain`, keep responses concise by default.
+3. For risky operations, include a safety checkpoint before execution.
+
 ## Practical Guardrail
 If a decision could break previously working results, branch it into a new versioned step/artifact and do not mutate the validated baseline.
