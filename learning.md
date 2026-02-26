@@ -33,6 +33,7 @@ Accepted into repository process:
    - Boundaries (`Always / Ask first / Never`)
 4. Keep explicit `--explain` behavior for step-by-step command guidance.
 5. Treat safety boundaries as high priority (no secrets, no destructive surprises).
+6. Maintain a living `README.md` for current status/onboarding and apply recurring cleanup passes.
 
 Adjusted for this repo:
 1. This project remains phase-first (`plan.md`) and hardware-pipeline focused.

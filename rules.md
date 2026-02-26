@@ -95,5 +95,25 @@ Scope:
 5. Keep Codex-specific behavior explicit: guidance is loaded from docs, but actions still require explicit execution.
 6. If using other tools requiring proprietary files, mirror `AGENTS.md` via wrapper/symlink instead of diverging guidance.
 
+## Documentation Cleanup Routine
+Regularly execute or propose a cleanup pass to keep governance and onboarding clear.
+
+Cadence:
+1. Trigger cleanup every 3 to 5 meaningful updates, or at phase boundary completion.
+2. Propose cleanup explicitly if scope/status has shifted but docs lag behind.
+
+Checklist:
+1. `README.md`: refresh current status, quick-start commands, and structure overview.
+2. `plan.md`: ensure one active step, append factual progress log entries, remove stale "next action" items.
+3. `learning.md`: consolidate duplicates, promote stable procedures to playbooks, archive outdated notes.
+4. `AGENTS.md`: keep concise, remove generic redundancy, keep boundaries and commands accurate.
+5. `rules.md`: adjust only for repeated failure patterns or governance drift.
+6. Validate cross-file consistency (`README.md` <-> `plan.md` <-> `learning.md` <-> `rules.md`).
+
+Output expectation for cleanup proposals:
+1. State why cleanup is due.
+2. List files to update.
+3. List intended tidy actions per file.
+
 ## Practical Guardrail
 If a decision could break previously working results, branch it into a new versioned step/artifact and do not mutate the validated baseline.
