@@ -158,6 +158,7 @@ Acceptance Criteria:
 - `2026-02-26`: Rebased execution branch onto latest governance branch and froze `P01.01` spec (keypoint order, acceptance thresholds, fallback hard gates); moved active step to `P01.02`.
 - `2026-02-26`: Training run started (unexpectedly launched as 100 epochs); active execution step moved to `P01.04` while preparing post-training evaluation and handoff materials in parallel.
 - `2026-02-26`: Added parallel-execution docs for `P01.04` gate checks, `P01.05` handoff packaging, `P02.01` Linux/Voyager bring-up, and run logging template.
+- `2026-02-26`: Added concise post-training next-steps checklist and an initial loose plan for pose-trigger software (`docs/04_postprocessing_integration`).
 
 ## Next Immediate Action
 Complete `P01.04` decision gate and prepare `P01.05` handoff:

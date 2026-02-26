@@ -28,7 +28,9 @@ Build a modular pipeline in four phases:
 - `docs/01_train_keypoints_windows/p01_02_p01_03_prep_checklists.md`: dataset/environment/command preparation checklists.
 - `docs/01_train_keypoints_windows/p01_04_evaluation_and_gate.md`: post-training gate and fallback decision flow.
 - `docs/01_train_keypoints_windows/p01_05_handoff_bundle.md`: standardized training-to-Linux handoff bundle.
+- `docs/01_train_keypoints_windows/next_steps_after_training.md`: short post-training execution checklist.
 - `docs/02_export_axelera_linux/p02_01_linux_voyager_bringup.md`: Linux/Voyager bring-up checklist.
+- `docs/04_postprocessing_integration/pose_trigger_loose_plan.md`: early design for user-defined pose triggers.
 - `notes/training_run_log.md`: run-by-run metrics and gate log template.
 - `docs/`: phase-specific documentation.
 - `artifacts/`: phase-specific outputs and evidence.

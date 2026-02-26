@@ -124,6 +124,7 @@ Define and integrate post-processing after baseline runtime success.
 
 What Worked:
 - Deferred by design.
+- Initial loose software concept for user-defined pose triggers is now documented.
 
 What Failed / Risks:
 - Scope not defined yet.
