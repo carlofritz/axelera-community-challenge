@@ -99,6 +99,7 @@ Acceptance Criteria:
 - `2026-02-26`: Initialized repository governance and modular phase structure. Set active step to `P01.01`.
 - `2026-02-26`: Initialized Git repository, added `.gitignore`/`.gitattributes`, and defined branch/PR flow in `docs/00_governance/version-control.md`.
 - `2026-02-26`: Added `--explain` response mode rules and created root `learning.md` with phase-based knowledge structure and reusable command playbooks.
+- `2026-02-26`: Added root `AGENTS.md` with six-core sections and boundary tiers; aligned `rules.md`/`learning.md` with iterative AGENTS maintenance guidance.
 
 ## Next Immediate Action
 Complete `P01.01` by freezing:

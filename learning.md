@@ -20,6 +20,25 @@ Tidy policy:
 - Active platform: `Windows`
 - Next platform: `Linux`
 
+## Governance Learnings (Agents + Workflow)
+Accepted into repository process:
+1. `AGENTS.md` is added as the agent-facing operations guide.
+2. Keep guidance minimal and iterative; expand only after repeated failure.
+3. Use six-core structure for high-signal guidance:
+   - Commands
+   - Testing
+   - Project Structure
+   - Code Style
+   - Git/PR Workflow
+   - Boundaries (`Always / Ask first / Never`)
+4. Keep explicit `--explain` behavior for step-by-step command guidance.
+5. Treat safety boundaries as high priority (no secrets, no destructive surprises).
+
+Adjusted for this repo:
+1. This project remains phase-first (`plan.md`) and hardware-pipeline focused.
+2. AGENTS guidance complements, but does not replace, `rules.md` and `plan.md`.
+3. Codex behavior is handled pragmatically: provide commands and run only when requested/appropriate.
+
 ## Phase Learnings
 
 ### P01 Training (Windows)

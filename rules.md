@@ -9,6 +9,8 @@ Primary sequence:
 3. Validate runtime execution on Metis.
 4. Integrate post-processing as a later phase.
 
+Agent guidance is defined in `AGENTS.md` and should stay concise, practical, and testable.
+
 ## Non-Negotiable Rules
 1. Preserve validated outputs. Never overwrite known-good phase artifacts.
 2. Work one phase at a time. Only one active phase is allowed.
@@ -78,6 +80,20 @@ Scope:
 1. Applies to any request that includes `--explain`.
 2. Without `--explain`, keep responses concise by default.
 3. For risky operations, include a safety checkpoint before execution.
+
+## AGENTS.md Quality Rules
+1. Keep `AGENTS.md` concise (target <150 lines unless clearly needed).
+2. Maintain these six core sections:
+   - Commands
+   - Testing
+   - Project Structure
+   - Code Style
+   - Git/PR Workflow
+   - Boundaries (`Always / Ask first / Never`)
+3. Prefer concrete commands, real paths, and examples over generic guidance.
+4. Add new rules only after repeated agent mistakes (progressive disclosure).
+5. Keep Codex-specific behavior explicit: guidance is loaded from docs, but actions still require explicit execution.
+6. If using other tools requiring proprietary files, mirror `AGENTS.md` via wrapper/symlink instead of diverging guidance.
 
 ## Practical Guardrail
 If a decision could break previously working results, branch it into a new versioned step/artifact and do not mutate the validated baseline.
