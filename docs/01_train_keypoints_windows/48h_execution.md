@@ -14,6 +14,10 @@ Accuracy refinement is explicitly out of critical path for this sprint.
 3. Primary training model: `yolo26n-pose`.
 4. Fallback model: `yolov8n-pose` (only on documented blocker).
 
+Reference docs:
+1. `p01_01_frozen_spec.md`
+2. `p01_02_p01_03_prep_checklists.md`
+
 ## Strategy
 1. Train on Lightning.ai Studio (cloud GPU).
 2. Deploy on Linux through Voyager custom-weights YAML flow.

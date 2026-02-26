@@ -16,7 +16,7 @@ Tidy policy:
 
 ## Project Snapshot
 - Date: `2026-02-26`
-- Active step: `P01.01`
+- Active step: `P01.02`
 - Active training environment: `Lightning.ai Studio`
 - Next platform: `Linux` (Voyager deployment on Orange Pi 5 Plus + Metis)
 
@@ -65,12 +65,13 @@ Decisions Taken:
 - Track one active step at a time in `plan.md`.
 - Use Lightning.ai Studio for cloud-GPU training.
 - Use `yolo26n-pose` as primary and `yolov8n-pose` as fallback.
+- Freeze P01.01 with explicit keypoint order, metric floor, and fallback hard gates.
 
 Open Questions:
-- Final hand keypoint schema and metric thresholds for `P01.01`.
+- Dataset retrieval details and run-specific hyperparameter tuning for `P01.03`.
 
 Next Update Trigger:
-- Freeze keypoint list/order and acceptance metrics for `P01.01`.
+- Complete dataset validation and run first smoke training command.
 
 ### P02 Export (Linux/Axelera)
 Goal:

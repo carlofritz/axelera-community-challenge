@@ -3,7 +3,7 @@
 Hand keypoint detection pipeline for Axelera Metis (accelerator) with Orange Pi 5 Plus (host).
 
 ## Current Status
-- Active step: `P01.01`
+- Active step: `P01.02`
 - Active training environment: `Lightning.ai Studio (cloud GPU)`
 - Deployment platform: `Linux` (Voyager SDK on Orange Pi 5 Plus + Metis)
 - Primary model plan: `yolo26n-pose`
@@ -24,6 +24,8 @@ Build a modular pipeline in four phases:
 - `plan.md`: active step and execution plan.
 - `learning.md`: reusable learnings and command playbooks.
 - `docs/01_train_keypoints_windows/48h_execution.md`: execution runbook (Lightning + Voyager path).
+- `docs/01_train_keypoints_windows/p01_01_frozen_spec.md`: frozen task/metric/fallback contract.
+- `docs/01_train_keypoints_windows/p01_02_p01_03_prep_checklists.md`: dataset/environment/command preparation checklists.
 - `docs/`: phase-specific documentation.
 - `artifacts/`: phase-specific outputs and evidence.
 

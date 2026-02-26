@@ -1,7 +1,7 @@
 # Hand Keypoint Pipeline Plan
 
 ## Current Step
-`P01.01` - Problem definition and keypoint target specification.
+`P01.02` - Finalize dataset source/format and annotation mapping.
 
 ## Current Platform
 Lightning.ai Studio (active for cloud-GPU training and model preparation).
@@ -41,6 +41,41 @@ Steps:
 3. `P01.03` Build baseline Ultralytics config and training recipe (`yolo26n-pose` primary).
 4. `P01.04` Execute training run(s), capture metrics, evaluate quality.
 5. `P01.05` Select best model and prepare export handoff bundle.
+
+P01.01 Frozen Spec (2026-02-26):
+1. Keypoint schema is fixed to 21 points with dimensionality `(x, y, visibility)` and `kpt_shape: [21, 3]`.
+2. Keypoint ordering is fixed to MediaPipe hand landmark order:
+   - `0 wrist`
+   - `1 thumb_cmc`
+   - `2 thumb_mcp`
+   - `3 thumb_ip`
+   - `4 thumb_tip`
+   - `5 index_finger_mcp`
+   - `6 index_finger_pip`
+   - `7 index_finger_dip`
+   - `8 index_finger_tip`
+   - `9 middle_finger_mcp`
+   - `10 middle_finger_pip`
+   - `11 middle_finger_dip`
+   - `12 middle_finger_tip`
+   - `13 ring_finger_mcp`
+   - `14 ring_finger_pip`
+   - `15 ring_finger_dip`
+   - `16 ring_finger_tip`
+   - `17 pinky_mcp`
+   - `18 pinky_pip`
+   - `19 pinky_dip`
+   - `20 pinky_tip`
+3. Demo-quality acceptance thresholds for advancing from P01:
+   - `metrics/pose(mAP50-95) >= 0.30`
+   - `metrics/pose(mAP50) >= 0.60`
+   - visual check: at least 85/100 sampled frames show one hand with stable, plausible landmarks.
+4. Model policy remains:
+   - Primary: `yolo26n-pose`
+   - Fallback: `yolov8n-pose` only on documented blocker criteria.
+5. Fallback trigger hard gates:
+   - two focused incompatibility failures in primary path, or
+   - missed timebox for first correct overlay on Metis by end of Phase D window.
 
 Acceptance Criteria:
 - Task definition and keypoint schema are frozen for Phase 1.
@@ -120,9 +155,10 @@ Acceptance Criteria:
 - `2026-02-26`: Added living `README.md` and formalized recurring documentation cleanup routine in `rules.md`.
 - `2026-02-26`: Switched primary P01 training path to Lightning.ai + `yolo26n-pose`, with `yolov8n-pose` as explicit fallback plan.
 - `2026-02-26`: Final web-validation pass added explicit double-check gates and fallback decision tree for YOLO26/YOLOv8 and `torch-aipu`/`gst` runtime strategy.
+- `2026-02-26`: Rebased execution branch onto latest governance branch and froze `P01.01` spec (keypoint order, acceptance thresholds, fallback hard gates); moved active step to `P01.02`.
 
 ## Next Immediate Action
-Complete `P01.01` by freezing:
-1. Hand keypoint list and ordering.
-2. Target training/evaluation metrics.
-3. Minimum acceptance threshold for advancing to `P01.02`.
+Complete `P01.02` and `P01.03` preparation:
+1. Validate dataset files and `hand-keypoints.yaml` consistency against frozen `P01.01` schema.
+2. Finalize Lightning.ai environment checklist and reproducible training command templates.
+3. Prepare smoke-run and main-run configs for `yolo26n-pose`, plus explicit fallback command for `yolov8n-pose`.
