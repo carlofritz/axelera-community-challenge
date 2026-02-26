@@ -20,6 +20,15 @@ Accuracy refinement is explicitly out of critical path for this sprint.
 3. Validate correctness first via `torch-aipu` style path.
 4. Attempt `gst` optimization only if 21x3 decode path is confirmed.
 
+## Pre-Flight Checks (Must Pass Before Deep Work)
+1. Confirm Ultralytics Hand Keypoints dataset yaml contains `kpt_shape: [21, 3]`.
+2. Confirm Linux environment is ready for Axelera export/tooling path (integration docs are Linux-focused).
+3. Run one stock Voyager zoo pipeline on target runtime host before custom model deployment.
+4. Verify current docs inconsistency with a fast smoke check:
+   - Ultralytics Pose docs list Axelera export for pose models.
+   - Ultralytics Axelera integration Supported Tasks still marks Pose as "coming soon".
+   - Therefore, test export path quickly and keep custom-weights path ready.
+
 ## Phase Plan
 
 ### A: Setup + Sanity (Hour 0-2)
@@ -50,6 +59,11 @@ Deliverables:
 
 Fallback rule:
 - If this path blocks repeatedly, switch training artifact to `yolov8n-pose`.
+
+Primary/Fallback Gate:
+1. Primary: `yolo26n-pose` until an explicit blocker is observed.
+2. Fallback trigger: two focused incompatibility failures or timebox breach.
+3. Fallback action: train/use `yolov8n-pose` and continue deployment path unchanged.
 
 Deliverable:
 - Deployable custom YAML for hand keypoints.
@@ -84,6 +98,11 @@ Switch from `yolo26n-pose` to `yolov8n-pose` if any is true:
 1. Two focused attempts fail due model/toolchain compatibility.
 2. Deployment remains blocked past sprint timebox.
 3. Demo cannot reach stable correct outputs with primary model path.
+
+## Runtime Path Guardrail
+1. First success target is correctness (`torch-aipu` + Python-side decode).
+2. `gst` path is optimization-only for this sprint.
+3. If `gst` breaks 21x3 output handling, keep demo on `torch-aipu` and defer decoder optimization.
 
 ## Notes
 - Left/right hand classification is optional and non-blocking.

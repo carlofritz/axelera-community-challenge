@@ -40,6 +40,7 @@ Adjusted for this repo:
 2. AGENTS guidance complements, but does not replace, `rules.md` and `plan.md`.
 3. Codex behavior is handled pragmatically: provide commands and run only when requested/appropriate.
 4. Primary model family is `YOLO26 pose`; fallback model family is `YOLOv8 pose` on documented blocker only.
+5. Official docs currently show a YOLO26/Axelera pose-support inconsistency; we treat export support as a test gate and keep fallback paths ready.
 
 ## Phase Learnings
 

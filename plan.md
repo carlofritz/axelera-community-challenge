@@ -53,6 +53,20 @@ Risks:
 - Early config choices may impact export compatibility later.
 - YOLO26 integration risk may require fallback to YOLOv8n-pose within timebox.
 
+Critical Double-Checks (web-verified on 2026-02-26):
+1. Ultralytics docs are currently inconsistent:
+   - Pose task page shows `Axelera` as available export format for YOLO26-pose.
+   - Axelera integration page "Supported Tasks" still lists Pose as "Coming soon".
+2. Treat YOLO26 -> Axelera pose export as a must-verify gate, not an assumption.
+3. Axelera integration docs list Linux-only export requirements and known first-run issues (including first-run export/inference friction).
+4. Voyager custom-weights flow is the operational fallback because the compiler supports direct PyTorch model deployment with dataset-based calibration.
+
+Fallback Decision Tree:
+1. Attempt primary path: `yolo26n-pose` + Voyager custom YAML + `torch-aipu` correctness run.
+2. If blocked by model/toolchain compatibility after two focused attempts, switch to `yolov8n-pose`.
+3. If `gst` path fails on keypoint shape handling, keep demo on `torch-aipu` and defer `gst` optimization.
+4. Record fallback trigger and evidence in `plan.md` progress log and `learning.md`.
+
 ### P02 - Export Model On Linux For Axelera Runtime
 Goal:
 Convert trained model into the required Axelera runtime-compatible format on Linux.
@@ -105,6 +119,7 @@ Acceptance Criteria:
 - `2026-02-26`: Added root `AGENTS.md` with six-core sections and boundary tiers; aligned `rules.md`/`learning.md` with iterative AGENTS maintenance guidance.
 - `2026-02-26`: Added living `README.md` and formalized recurring documentation cleanup routine in `rules.md`.
 - `2026-02-26`: Switched primary P01 training path to Lightning.ai + `yolo26n-pose`, with `yolov8n-pose` as explicit fallback plan.
+- `2026-02-26`: Final web-validation pass added explicit double-check gates and fallback decision tree for YOLO26/YOLOv8 and `torch-aipu`/`gst` runtime strategy.
 
 ## Next Immediate Action
 Complete `P01.01` by freezing:
