@@ -1,7 +1,7 @@
 # Hand Keypoint Pipeline Plan
 
 ## Current Step
-`P01.02` - Finalize dataset source/format and annotation mapping.
+`P01.04` - Execute training run(s), capture metrics, evaluate quality.
 
 ## Current Platform
 Lightning.ai Studio (active for cloud-GPU training and model preparation).
@@ -156,9 +156,11 @@ Acceptance Criteria:
 - `2026-02-26`: Switched primary P01 training path to Lightning.ai + `yolo26n-pose`, with `yolov8n-pose` as explicit fallback plan.
 - `2026-02-26`: Final web-validation pass added explicit double-check gates and fallback decision tree for YOLO26/YOLOv8 and `torch-aipu`/`gst` runtime strategy.
 - `2026-02-26`: Rebased execution branch onto latest governance branch and froze `P01.01` spec (keypoint order, acceptance thresholds, fallback hard gates); moved active step to `P01.02`.
+- `2026-02-26`: Training run started (unexpectedly launched as 100 epochs); active execution step moved to `P01.04` while preparing post-training evaluation and handoff materials in parallel.
+- `2026-02-26`: Added parallel-execution docs for `P01.04` gate checks, `P01.05` handoff packaging, `P02.01` Linux/Voyager bring-up, and run logging template.
 
 ## Next Immediate Action
-Complete `P01.02` and `P01.03` preparation:
-1. Validate dataset files and `hand-keypoints.yaml` consistency against frozen `P01.01` schema.
-2. Finalize Lightning.ai environment checklist and reproducible training command templates.
-3. Prepare smoke-run and main-run configs for `yolo26n-pose`, plus explicit fallback command for `yolov8n-pose`.
+Complete `P01.04` decision gate and prepare `P01.05` handoff:
+1. Capture run metrics and compare against frozen thresholds.
+2. Decide `yolo26n-pose` pass/fallback using documented hard gates.
+3. Package handoff bundle (`best.pt`, dataset yaml, configs, metrics, notes) for Linux/Voyager.

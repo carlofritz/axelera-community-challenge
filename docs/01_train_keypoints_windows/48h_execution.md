@@ -17,6 +17,8 @@ Accuracy refinement is explicitly out of critical path for this sprint.
 Reference docs:
 1. `p01_01_frozen_spec.md`
 2. `p01_02_p01_03_prep_checklists.md`
+3. `p01_04_evaluation_and_gate.md`
+4. `p01_05_handoff_bundle.md`
 
 ## Strategy
 1. Train on Lightning.ai Studio (cloud GPU).

@@ -50,6 +50,7 @@ Train a hand keypoint model with Ultralytics and produce a reproducible handoff 
 
 What Worked:
 - Phase-based governance and progress tracking are now in place.
+- Parallel preparation while training runs reduces idle time and keeps phase transitions smooth.
 
 What Failed / Risks:
 - YOLO26 may require fallback to YOLOv8n-pose if deployment compatibility blocks progress.
@@ -68,10 +69,10 @@ Decisions Taken:
 - Freeze P01.01 with explicit keypoint order, metric floor, and fallback hard gates.
 
 Open Questions:
-- Dataset retrieval details and run-specific hyperparameter tuning for `P01.03`.
+- Final training outcome and gate decision from current 100-epoch run.
 
 Next Update Trigger:
-- Complete dataset validation and run first smoke training command.
+- Current training run finishes and `P01.04` gate decision is recorded.
 
 ### P02 Export (Linux/Axelera)
 Goal:

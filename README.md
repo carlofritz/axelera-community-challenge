@@ -26,6 +26,10 @@ Build a modular pipeline in four phases:
 - `docs/01_train_keypoints_windows/48h_execution.md`: execution runbook (Lightning + Voyager path).
 - `docs/01_train_keypoints_windows/p01_01_frozen_spec.md`: frozen task/metric/fallback contract.
 - `docs/01_train_keypoints_windows/p01_02_p01_03_prep_checklists.md`: dataset/environment/command preparation checklists.
+- `docs/01_train_keypoints_windows/p01_04_evaluation_and_gate.md`: post-training gate and fallback decision flow.
+- `docs/01_train_keypoints_windows/p01_05_handoff_bundle.md`: standardized training-to-Linux handoff bundle.
+- `docs/02_export_axelera_linux/p02_01_linux_voyager_bringup.md`: Linux/Voyager bring-up checklist.
+- `notes/training_run_log.md`: run-by-run metrics and gate log template.
 - `docs/`: phase-specific documentation.
 - `artifacts/`: phase-specific outputs and evidence.
 
