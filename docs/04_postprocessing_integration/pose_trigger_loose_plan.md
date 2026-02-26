@@ -1,5 +1,9 @@
 # Pose Trigger Software (Loose Plan)
 
+Note:
+- This document is the early ideation version.
+- The implementation-ready plan is in `p04_v0_pose_trigger_plan.md`.
+
 ## Goal
 After hand keypoint detection is running, enable user-defined gesture triggers:
 1. User provides 1-10 reference images for a target pose.

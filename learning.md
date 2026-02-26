@@ -125,21 +125,25 @@ Define and integrate post-processing after baseline runtime success.
 What Worked:
 - Deferred by design.
 - Initial loose software concept for user-defined pose triggers is now documented.
+- P04 now has an implementation-ready V0 blueprint (API, types, pipeline, defaults, tests).
 
 What Failed / Risks:
-- Scope not defined yet.
+- Static-pose V0 is defined, but runtime integration risks remain (latency, false triggers under occlusion).
 
 Reusable Commands:
 - Placeholder until phase execution starts.
 
 Decisions Taken:
 - Post-processing intentionally follows successful runtime validation.
+- V0 uses local webapp + FastAPI backend on Orange Pi, same-process topology.
+- V0 trigger outputs are webhook + local logs, with JSON persistence.
+- Dynamic gestures are explicitly deferred and planned as a post-V0 extension.
 
 Open Questions:
-- Output contract and algorithmic approach.
+- Threshold tuning and robustness targets under real lighting/camera variation.
 
 Next Update Trigger:
-- Runtime output contract finalized in P03.
+- First live trigger event emitted on target hardware from integrated runtime.
 
 ## Reusable Command Playbooks
 

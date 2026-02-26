@@ -143,9 +143,26 @@ Inputs:
 
 Outputs:
 - Post-processing module design and implementation plan.
+- V0 trigger engine and local webapp for static pose triggers.
+- Event emission contract (webhook + local logs).
 
 Acceptance Criteria:
 - Clear integration path defined with measurable validation criteria.
+- User can define a pose from live capture (1-10 samples) and receive trigger events.
+- Trigger config persists locally and survives process restart.
+
+P04 V0 Decisions (2026-02-26):
+1. Runtime topology: same-process on Orange Pi.
+2. Interface: local webapp + backend.
+3. Trigger type: static poses only (dynamic gestures deferred).
+4. Trigger outputs: webhook + local event log.
+5. Persistence: local JSON files.
+6. Security: LAN-only bind with optional token.
+7. Hand mode default: `any` (left/right strict mode optional).
+8. Capture flow: live capture burst in app (1-10 samples).
+
+P04 V0 Blueprint:
+- `docs/04_postprocessing_integration/p04_v0_pose_trigger_plan.md`
 
 ## Progress Log
 - `2026-02-26`: Initialized repository governance and modular phase structure. Set active step to `P01.01`.
@@ -159,6 +176,7 @@ Acceptance Criteria:
 - `2026-02-26`: Training run started (unexpectedly launched as 100 epochs); active execution step moved to `P01.04` while preparing post-training evaluation and handoff materials in parallel.
 - `2026-02-26`: Added parallel-execution docs for `P01.04` gate checks, `P01.05` handoff packaging, `P02.01` Linux/Voyager bring-up, and run logging template.
 - `2026-02-26`: Added concise post-training next-steps checklist and an initial loose plan for pose-trigger software (`docs/04_postprocessing_integration`).
+- `2026-02-26`: Added implementation-ready P04 V0 pose-trigger architecture plan (types, APIs, runtime pipeline, defaults, tests, rollout, dynamic-gesture extension path).
 
 ## Next Immediate Action
 Complete `P01.04` decision gate and prepare `P01.05` handoff:

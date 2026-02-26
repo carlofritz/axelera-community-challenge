@@ -31,6 +31,7 @@ Build a modular pipeline in four phases:
 - `docs/01_train_keypoints_windows/next_steps_after_training.md`: short post-training execution checklist.
 - `docs/02_export_axelera_linux/p02_01_linux_voyager_bringup.md`: Linux/Voyager bring-up checklist.
 - `docs/04_postprocessing_integration/pose_trigger_loose_plan.md`: early design for user-defined pose triggers.
+- `docs/04_postprocessing_integration/p04_v0_pose_trigger_plan.md`: implementation-ready V0 plan for pose-trigger webapp + engine.
 - `notes/training_run_log.md`: run-by-run metrics and gate log template.
 - `docs/`: phase-specific documentation.
 - `artifacts/`: phase-specific outputs and evidence.
