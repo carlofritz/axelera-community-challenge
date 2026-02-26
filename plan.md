@@ -4,7 +4,7 @@
 `P01.01` - Problem definition and keypoint target specification.
 
 ## Current Platform
-Windows (active for training preparation and model training).
+Lightning.ai Studio (active for cloud-GPU training and model preparation).
 
 ## Next Platform
 Linux (planned for Axelera-compliant export and runtime preparation).
@@ -13,21 +13,22 @@ Linux (planned for Axelera-compliant export and runtime preparation).
 Build a hand keypoint detection pipeline for Axelera Metis (accelerator) with Orange Pi 5 Plus (host), starting with model training and then export/runtime integration.
 
 ## Phase Index
-- `P01` In Progress: Train hand keypoint model with Ultralytics on Windows.
+- `P01` In Progress: Train hand keypoint model with Ultralytics on Lightning.ai.
 - `P02` Planned: Export trained model on Linux in accordance with Axelera runtime requirements.
 - `P03` Planned: Validate model runtime execution on Metis.
 - `P04` Planned: Define and integrate post-processing.
 
 ## Phase Details
 
-### P01 - Train Keypoint Model On Windows
+### P01 - Train Keypoint Model On Lightning.ai
 Goal:
 Produce a validated hand keypoint model checkpoint suitable for downstream export.
 
 Inputs:
 - Hand keypoint task definition.
-- Dataset and annotation schema.
+- Ultralytics Hand Keypoints dataset schema (`kpt_shape: [21, 3]`).
 - Ultralytics training configuration.
+- Cloud GPU training environment on Lightning.ai.
 
 Outputs:
 - Trained model checkpoint(s).
@@ -37,7 +38,7 @@ Outputs:
 Steps:
 1. `P01.01` Define problem scope, keypoint set, and success metrics.
 2. `P01.02` Finalize dataset source/format and annotation mapping.
-3. `P01.03` Build baseline Ultralytics config and training recipe.
+3. `P01.03` Build baseline Ultralytics config and training recipe (`yolo26n-pose` primary).
 4. `P01.04` Execute training run(s), capture metrics, evaluate quality.
 5. `P01.05` Select best model and prepare export handoff bundle.
 
@@ -45,10 +46,12 @@ Acceptance Criteria:
 - Task definition and keypoint schema are frozen for Phase 1.
 - At least one reproducible training run is documented.
 - Best checkpoint and training metadata are archived in phase artifacts.
+- Fallback gate is defined: move to `yolov8n-pose` only on documented blocker.
 
 Risks:
 - Dataset quality and keypoint consistency may limit training convergence.
 - Early config choices may impact export compatibility later.
+- YOLO26 integration risk may require fallback to YOLOv8n-pose within timebox.
 
 ### P02 - Export Model On Linux For Axelera Runtime
 Goal:
@@ -101,6 +104,7 @@ Acceptance Criteria:
 - `2026-02-26`: Added `--explain` response mode rules and created root `learning.md` with phase-based knowledge structure and reusable command playbooks.
 - `2026-02-26`: Added root `AGENTS.md` with six-core sections and boundary tiers; aligned `rules.md`/`learning.md` with iterative AGENTS maintenance guidance.
 - `2026-02-26`: Added living `README.md` and formalized recurring documentation cleanup routine in `rules.md`.
+- `2026-02-26`: Switched primary P01 training path to Lightning.ai + `yolo26n-pose`, with `yolov8n-pose` as explicit fallback plan.
 
 ## Next Immediate Action
 Complete `P01.01` by freezing:

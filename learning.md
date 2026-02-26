@@ -17,8 +17,8 @@ Tidy policy:
 ## Project Snapshot
 - Date: `2026-02-26`
 - Active step: `P01.01`
-- Active platform: `Windows`
-- Next platform: `Linux`
+- Active training environment: `Lightning.ai Studio`
+- Next platform: `Linux` (Voyager deployment on Orange Pi 5 Plus + Metis)
 
 ## Governance Learnings (Agents + Workflow)
 Accepted into repository process:
@@ -39,10 +39,11 @@ Adjusted for this repo:
 1. This project remains phase-first (`plan.md`) and hardware-pipeline focused.
 2. AGENTS guidance complements, but does not replace, `rules.md` and `plan.md`.
 3. Codex behavior is handled pragmatically: provide commands and run only when requested/appropriate.
+4. Primary model family is `YOLO26 pose`; fallback model family is `YOLOv8 pose` on documented blocker only.
 
 ## Phase Learnings
 
-### P01 Training (Windows)
+### P01 Training (Lightning.ai)
 Goal:
 Train a hand keypoint model with Ultralytics and produce a reproducible handoff checkpoint.
 
@@ -50,7 +51,7 @@ What Worked:
 - Phase-based governance and progress tracking are now in place.
 
 What Failed / Risks:
-- GitHub CLI auth currently invalid; remote creation/push blocked until re-authentication.
+- YOLO26 may require fallback to YOLOv8n-pose if deployment compatibility blocks progress.
 
 Reusable Commands:
 ```powershell
@@ -61,6 +62,8 @@ Check current branch and working tree state.
 Decisions Taken:
 - Use modular phase folders.
 - Track one active step at a time in `plan.md`.
+- Use Lightning.ai Studio for cloud-GPU training.
+- Use `yolo26n-pose` as primary and `yolov8n-pose` as fallback.
 
 Open Questions:
 - Final hand keypoint schema and metric thresholds for `P01.01`.

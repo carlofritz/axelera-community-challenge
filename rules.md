@@ -4,7 +4,7 @@
 This repository governs a modular, phase-based build of a hand keypoint detection pipeline targeting Axelera Metis, with Orange Pi 5 Plus as host.
 
 Primary sequence:
-1. Train keypoint model on Windows using Ultralytics.
+1. Train keypoint model on Lightning.ai (cloud GPU) using Ultralytics.
 2. Export model on Linux for Axelera runtime compliance.
 3. Validate runtime execution on Metis.
 4. Integrate post-processing as a later phase.
@@ -114,6 +114,15 @@ Output expectation for cleanup proposals:
 1. State why cleanup is due.
 2. List files to update.
 3. List intended tidy actions per file.
+
+## Model Selection Policy (Time-Boxed Delivery)
+1. Primary training model family: `YOLO26 pose` (default `yolo26n-pose`).
+2. Fallback model family: `YOLOv8 pose` (default `yolov8n-pose`) only on explicit blocker.
+3. Blocker criteria for fallback:
+   - repeated integration failure across two focused attempts, or
+   - unresolved deployment incompatibility inside sprint timebox.
+4. Do not change model family late in a phase without logging rationale in `plan.md`.
+5. In short-deadline mode, prioritize demo correctness first and defer accuracy/performance refinements.
 
 ## Practical Guardrail
 If a decision could break previously working results, branch it into a new versioned step/artifact and do not mutate the validated baseline.
